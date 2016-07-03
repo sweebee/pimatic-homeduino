@@ -88,10 +88,11 @@ module.exports = (env) ->
                   protocols: protocolConfig
                 }
               when 'weather'
-                config = {
-                  class: 'HomeduinoRFWeatherStation'
-                  protocols: protocolConfig
-                }
+                if event.values.temperature and event.values.temperature > -50
+                  config = {
+                    class: 'HomeduinoRFWeatherStation'
+                    protocols: protocolConfig
+                  }
               when 'contact'
                 config = {
                   class: 'HomeduinoRFContactSensor'
